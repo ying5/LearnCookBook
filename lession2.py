@@ -5,7 +5,10 @@ from collections import Counter
 from operator import itemgetter
 from operator import attrgetter
 from itertools import groupby
+from collections import namedtuple
+from collections import ChainMap
 import json
+import os
 class PriorityQueue(object):
 	def __init__(self):
 		self._queue = []
@@ -46,6 +49,7 @@ def code1_9_2():
 	a={'x':1, 'y':2, 'z':3 } 
 	b={'x':1, 'w':2, 'h':3 }
 	print(a.keys()&b.keys(),a.keys()-b.keys(),a.items()&b.items())
+	print(a+b)
 def code1_10_2(items,key=None):
 	s  = set()
 	for item in items:
@@ -97,8 +101,56 @@ def code1_15_2():
 		for item in items:
 			print(item)
 
-
+def rule(value):
+		try:
+			x = int(value)
+			return True
+		except ValueError:
+			return False
+def code1_16_2():
+	values=['1','2','-','?','5','8']
+	print(list(filter(rule,values)))
+def code1_17_2():
+	prices = {
+		'acme':45.23,
+		'aapl':612.78,
+		'ibm':205.55,
+		'hpq':37.20,
+		'f8':10.75
+	}
+	p2 = {key:value for key,value in prices.items() if value > 200}
+	print(p2)
+def dict_to_Point(temp,s):
+	return temp._replace(**s)
+	#print(temp)
+def code1_18_2():
+	a = [
+		(1,2),
+		(3,5),
+	]
+	b = {'name':"ST",'age':18}
+	Point = namedtuple("Point",('x','y','name','age'))
+	for item in a:
+		temp = Point(*item,None,None)
+		print(temp.x,temp.y,temp.name,temp.age)
+		temp = dict_to_Point(temp,b)
+		print(temp.x,temp.y,temp.name,temp.age)
+def code1_19_2():
+	files = os.listdir('../LearnCOOKBOOK')
+	if(any(name.endswith('.py') for name in files)):
+		print("存在py")
+	else:
+		print("没有py")
+def code1_20_2():
+	a = {'x':1, 'z':3 } 
+	b = {'y':2, 'z':4 }
+	c = ChainMap(a,b)
+	print(c['z'])
+	c = c.new_child()
+	c['x'] =3
+	print(c['x'])
 if __name__ == '__main__':
 	#print(list(code1_10_2(l,lambda x:x+1)))
 	s = "HelloWorld"
-	code1_15_2()
+	#temp = 1
+	code1_20_2()
