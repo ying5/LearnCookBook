@@ -1,4 +1,5 @@
 import os
+import re
 from fnmatch import fnmatch,fnmatchcase
 def code2_2_2():
 	files = os.listdir('.')
@@ -10,5 +11,16 @@ def code3_2_2():
 	a = 4.2
 	b = 2.1
 	print (a+b)
+def code2_4_2():
+	pattern = re.compile(r"\d+/\d+/\d+")
+	text1 = "djksf2016/7/4"
+	output = pattern.findall(text1)
+	if(output!=None):
+		print(name for name in output)
+
+def code2_5_2():
+	pattern = re.compile(r"(\d+)/(\d+)/(\d+)")
+	text = "today is 11/7/2016"
+	print(pattern.sub(r"\3-\1-\2",text))
 if __name__ == '__main__':
-	code3_2_2()
+	code2_5_2()
