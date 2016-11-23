@@ -1,10 +1,13 @@
 import Global
+import WordDict
 def getGenerator():
 	for s in Global.STRING:
+		if s == '\n':continue
 		yield s
 def getChar(temp):
 	try:
 		char = next(temp)
+		print(char)
 		if str.isdigit(char):
 			Global.CurrentNum = int(char)
 			return Global.DIGIT
@@ -94,5 +97,6 @@ if __name__ == '__main__':
 			temp = getGenerator()
 			while(Global.CurrentState != Global.EndState):
 				char = getChar(temp)
+				#print(char)
 				excute(Global.CurrentState,char)
 			print(Global.Answer)

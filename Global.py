@@ -1,13 +1,18 @@
 #####不可变常量#######################
 
 
-DIGIT = 1
-POINT = 2
-PLUS = 3
-MINUS = 4
-Letter = 5
-Other = 6
-EOF = 0
+EOF = 1000000
+DIGIT = 1000001
+POINT = 1000002
+PLUS = 1000003
+MINUS = 1000004
+Letter = 1000005
+Other = 1000006
+ENTER =1000007
+SPACE = 1000008
+LEFTEQUAL = 1000009   #    代表<
+RIGHTEQUAL = 1000010  #    代表>
+EQUAL = 1000011       #    代表= 
 EndState = -1
 StartState = 0
 ######################################
